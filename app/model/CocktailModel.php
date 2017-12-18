@@ -5,22 +5,24 @@
  * Date: 12/18/2017
  * Time: 5:16 PM
  */
-namespace model;
-
+namespace app\model;
 $root = $_SERVER['DOCUMENT_ROOT']."/projects/bachelor/app/";
+require_once $root."interface/CRUD.php";
 
-class Cocktail
+use app\interfaces\CRUD;
+
+
+class CocktailModel extends CRUD
 {
     private $name;
     private $description;
     private $recipe;
     private $imgPath;
 
-    public function __construct($name, $description, $recipe, $imgPath)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->description = $description;
-        $this->recipe = $recipe;
-        $this->imgPath = $imgPath;
+        // Set the table name in the constructor
+        parent::__construct("cocktail");
     }
 }
+
