@@ -22,8 +22,16 @@ abstract class CRUD extends DBHandler
     }
 
     public function create(){}
-    public function read(){}
+
+    public function read($id){
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->tableName.' WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        $entity = $stmt->fetchAll();
+        return $entity;
+    }
+
     public function update(){}
+
     public function delete(){}
 
     // Retrieve all data from a table

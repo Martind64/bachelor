@@ -9,21 +9,20 @@ use app\DBHandler;
 use app\interfaces\CRUD;
 use app\model\CocktailModel;
 
-class Cocktail extends CocktailModel
+class Cocktail
 {
     public function __construct()
     {
-        // set up the DB connection
-        parent::__construct();
     }
 
     public function create()
     {
     }
 
-    public function read()
+    public function read($id)
     {
-        // TODO: Implement read() method.
+        $cocktail = new CocktailModel();
+        return $cocktail->read($id);
     }
 
     public function update()
@@ -35,13 +34,16 @@ class Cocktail extends CocktailModel
     {
         // TODO: Implement delete() method.
     }
-
+    public function readAll(){
+        $cocktail = new CocktailModel();
+        return $cocktail->readAll();
+    }
 }
 
 $cl = new Cocktail();
 
 echo "<pre>";
-$cocktails = $cl->readAll();
+$cocktails = $cl->read(1);
 echo "----------- RESULT -----------".PHP_EOL;
 print_r($cocktails); ECHO PHP_EOL;
 echo "----------- RESULT -----------".PHP_EOL;
