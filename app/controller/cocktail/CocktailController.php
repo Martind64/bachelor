@@ -1,27 +1,20 @@
 <?php
 namespace app\controller\cocktail;
 $root = $_SERVER['DOCUMENT_ROOT']."/projects/bachelor/app/";
-require_once $root."interface/CRUD.php";
-require_once $root."model/CocktailModel.php";
+require_once $root."model/Cocktail.php";
 
 
-use app\DBHandler;
-use app\interfaces\CRUD;
-use app\model\CocktailModel;
+use app\model\Cocktail;
 
-class Cocktail
+class CocktailController
 {
-    public function __construct()
-    {
-    }
-
     public function create()
     {
     }
 
     public function read($id)
     {
-        $cocktail = new CocktailModel();
+        $cocktail = new Cocktail();
         return $cocktail->read($id);
     }
 
@@ -35,12 +28,12 @@ class Cocktail
         // TODO: Implement delete() method.
     }
     public function readAll(){
-        $cocktail = new CocktailModel();
+        $cocktail = new Cocktail();
         return $cocktail->readAll();
     }
 }
 
-$cl = new Cocktail();
+$cl = new CocktailController();
 
 echo "<pre>";
 $cocktails = $cl->read(1);

@@ -1,0 +1,15 @@
+{
+    "name": "delfs/bachelor",
+    "authors": [
+        {
+            "name": "Martin Delfs",
+            "email": "Martind_64@hotmail.com"
+        }
+    ],
+    "require": {
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    }
+}

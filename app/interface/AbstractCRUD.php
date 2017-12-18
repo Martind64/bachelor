@@ -6,13 +6,11 @@
  * Time: 5:32 PM
  */
 namespace app\interfaces;
-$root = $_SERVER['DOCUMENT_ROOT']."/projects/bachelor/app/";
-
-require_once $root."DBHandler.php";
+require_once __DIR__."../../DBHandler.php";
 
 use app\DBHandler;
 
-abstract class CRUD extends DBHandler
+abstract class AbstractCRUD extends DBHandler
 {
     private $tableName;
     public function __construct($tableName)

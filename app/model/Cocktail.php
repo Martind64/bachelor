@@ -6,13 +6,12 @@
  * Time: 5:16 PM
  */
 namespace app\model;
-$root = $_SERVER['DOCUMENT_ROOT']."/projects/bachelor/app/";
-require_once $root."interface/CRUD.php";
+require_once __DIR__."/../interface/AbstractCRUD.php";
 
-use app\interfaces\CRUD;
+use app\interfaces\AbstractCRUD;
 
 
-class CocktailModel extends CRUD
+class Cocktail extends AbstractCRUD
 {
     private $name;
     private $description;
