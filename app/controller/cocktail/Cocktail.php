@@ -1,19 +1,17 @@
 <?php
 namespace app\controller\cocktail;
 $root = $_SERVER['DOCUMENT_ROOT']."/projects/bachelor/app/";
+require_once $root."interface/CRUD.php";
 
 use app\DBHandler;
 use app\interfaces\CRUD;
-
-
-require_once $root."interface/CRUD.php";
 
 class Cocktail extends CRUD
 {
     public function __construct()
     {
         // set up the DB connection
-        parent::__construct();
+        parent::__construct('cocktail');
     }
 
     public function create()
@@ -35,13 +33,13 @@ class Cocktail extends CRUD
         // TODO: Implement delete() method.
     }
 
-    public function readAll()
-    {
-    }
 }
 
 $cl = new Cocktail();
+
+$cocktails = $cl->readAll();
 echo "----------- RESULT -----------".PHP_EOL;
-print_r($cl->pdo); ECHO PHP_EOL;
+print_r($cocktails); ECHO PHP_EOL;
 echo "----------- RESULT -----------".PHP_EOL;
+
 

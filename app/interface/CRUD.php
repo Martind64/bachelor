@@ -14,8 +14,10 @@ use app\DBHandler;
 
 abstract class CRUD extends DBHandler
 {
-    public function __construct()
+    private $tableName;
+    public function __construct($tableName)
     {
+        $this->tableName = $tableName;
         parent::__construct();
     }
 
@@ -23,6 +25,16 @@ abstract class CRUD extends DBHandler
     public function read(){}
     public function update(){}
     public function delete(){}
-    public function readAll(){}
+
+    // Retrieve all data from a table
+    public function readAll(){
+        // prepare the query
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->tableName);
+        // execute the query
+        $stmt->execute();
+        // Fetch all the data
+        $entities = $stmt->fetchAll();
+        return $entities;
+    }
 
 }
