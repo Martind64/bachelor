@@ -37,9 +37,9 @@ class AbstractCRUDHelperTest extends TestCase
     /**
     * @test
     */
-    public function getClassName_validModel_className(){
+    public function getTableName_validModel_className(){
         $cocktail = new Cocktail();
-        $result = $this->abstractCRUDHelper->getClassName($cocktail);
+        $result = $this->abstractCRUDHelper->getTableName($cocktail);
         $this->assertEquals('cocktail', $result);
     }
 
