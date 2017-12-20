@@ -7,23 +7,29 @@
  */
 namespace app\interfaces;
 require_once __DIR__."../../DBHandler.php";
+require_once __DIR__."/../helper/AbstractCRUDHelper.php";
 
 use app\DBHandler;
+use app\helper\AbstractCRUDHelper;
 
 abstract class AbstractCRUD extends DBHandler
 {
     private $tableName;
-    public function __construct($tableName)
+    public function __construct($model)
     {
-        $this->tableName = $tableName;
-        parent::__construct();
+        $helper = new AbstractCRUDHelper();
+        $this->tableName = $helper->getClassName($model);
     }
 
     public function create(){}
 
     public function read($id){
+        $this->initializeConnection();
+        // prepare the query
         $stmt = $this->pdo->prepare('SELECT * FROM '.$this->tableName.' WHERE id = :id');
+        // execute the query
         $stmt->execute(['id' => $id]);
+        // Fetch all the data
         $entity = $stmt->fetchAll();
         return $entity;
     }
@@ -34,6 +40,7 @@ abstract class AbstractCRUD extends DBHandler
 
     // Retrieve all data from a table
     public function readAll(){
+        $this->initializeConnection();
         // prepare the query
         $stmt = $this->pdo->prepare('SELECT * FROM '.$this->tableName);
         // execute the query

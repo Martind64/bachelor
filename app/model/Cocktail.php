@@ -13,15 +13,23 @@ use app\interfaces\AbstractCRUD;
 
 class Cocktail extends AbstractCRUD
 {
-    private $name;
-    private $description;
-    private $recipe;
-    private $imgPath;
+    public $name;
+    public $description;
+    public $recipe;
+    public $imgPath;
 
     public function __construct()
     {
         // Set the table name in the constructor
-        parent::__construct("cocktail");
+        parent::__construct($this);
     }
 }
+
+echo "<pre>";
+$c = new Cocktail();
+$co = $c->readAll();
+echo "----------- RESULT -----------".PHP_EOL;
+print_r($co); ECHO PHP_EOL;
+echo "----------- RESULT -----------".PHP_EOL;
+
 
