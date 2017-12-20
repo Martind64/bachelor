@@ -7,11 +7,12 @@
  */
 namespace app\model;
 require_once __DIR__."/../interface/AbstractCRUD.php";
+require_once __DIR__."/model.php";
 
 use app\interfaces\AbstractCRUD;
 
 
-class Cocktail extends AbstractCRUD
+class Cocktail extends model
 {
     public $name;
     public $description;
@@ -20,7 +21,6 @@ class Cocktail extends AbstractCRUD
 
     public function __construct()
     {
-        // Set the table name in the constructor
         parent::__construct($this);
     }
 }
@@ -32,4 +32,4 @@ echo "----------- RESULT -----------".PHP_EOL;
 print_r($co); ECHO PHP_EOL;
 echo "----------- RESULT -----------".PHP_EOL;
 
-
+echo $c->getTableName();

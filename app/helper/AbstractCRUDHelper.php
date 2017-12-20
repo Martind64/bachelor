@@ -12,7 +12,7 @@ use app\interfaces\AbstractCRUD;
 
 class AbstractCRUDHelper
 {
-    public function getClassName(AbstractCRUD $class){
+    public function getTableNameFromClass(AbstractCRUD $class){
         // Get the class name with namespace
         $classWithNamespace = get_class($class);
 
@@ -23,6 +23,10 @@ class AbstractCRUDHelper
         $className = strtolower($className);
 
         return $className;
+    }
+
+    public function prepareCreateSql(AbstractCRUD $class){
+
     }
 }
 

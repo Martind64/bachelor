@@ -10,23 +10,26 @@ require_once __DIR__."../../DBHandler.php";
 require_once __DIR__."/../helper/AbstractCRUDHelper.php";
 
 use app\DBHandler;
-use app\helper\AbstractCRUDHelper;
 
-abstract class AbstractCRUD extends DBHandler
+abstract class AbstractCRUD
 {
-    private $tableName;
-    public function __construct($model)
+    private $dbHandler;
+    public function __construct()
     {
-        $helper = new AbstractCRUDHelper();
-        $this->tableName = $helper->getClassName($model);
+        $this->dbHandler = new DBHandler();
+        // OLD FOR REPORT
+//        $helper = new AbstractCRUDHelper();
+//        $this->tableName = $helper->getClassName($model);
+//        $hey = $this->getTable($model);
+//        var_dump($hey);
     }
 
     public function create(){}
 
     public function read($id){
-        $this->initializeConnection();
+        $this->dbHandler->initializeConnection();
         // prepare the query
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->tableName.' WHERE id = :id');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->getTable().' WHERE id = :id');
         // execute the query
         $stmt->execute(['id' => $id]);
         // Fetch all the data
@@ -40,12 +43,12 @@ abstract class AbstractCRUD extends DBHandler
 
     // Retrieve all data from a table
     public function readAll(){
-        $this->initializeConnection();
+        $this->dbHandler->initializeConnection();
         // prepare the query
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->tableName);
-        // execute the query
+        $stmt = $this->dbHandler->pdo->prepare('SELECT * FROM '.$this->getTableName());
+//         execute the query
         $stmt->execute();
-        // Fetch all the data
+//         Fetch all the data
         $entities = $stmt->fetchAll();
         return $entities;
     }
