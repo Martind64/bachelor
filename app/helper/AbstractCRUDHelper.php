@@ -30,21 +30,22 @@ class AbstractCRUDHelper
     public function formatCreateSql(Model $class){
     }
 
-    public function formatReadSql(Model $class){
-        
-    }
-
     // Take CamelCase and replaces with snake case
     public function formatProperties(Model $class){
 
         // Get the properties of the object
         $properties = get_object_vars($class);
+        echo "----------- RESULT -----------".PHP_EOL;
+        print_r($properties); ECHO PHP_EOL;
+        echo "----------- RESULT -----------".PHP_EOL;
         // Get the properties as values in the array instead
         $properties = array_keys($properties);
 
-        // Foreach of the proeprty check for a capital letters and add an underscore instead
+        // Foreach of the properties check for a capital letters and add an underscore instead
         foreach ($properties as $propertyKey => $property){
-            if (preg_match_all("/[A-Z]/", $property, $matches, PREG_PATTERN_ORDER)){
+            // Put capital letters into an array called $matche
+            if (preg_match_all("/[A-Z]/", $property, $matches)){
+                //  Foreach of the matches add an underscore behind the capital letter
                 foreach ($matches[0] as $key => $capitalLetter){
                     $properties[$propertyKey] = substr_replace($property, "_{$matches[0][$key]}", strpos($property, $matches[0][$key]), 1);
                 }
@@ -52,7 +53,8 @@ class AbstractCRUDHelper
         }
         // Set all properties to lowercase before returning them
         $properties = array_map("strtolower", $properties);
-
+        // Return properties as a comma separated string
+        $properties = implode(", ",$properties);
         return $properties;
 
     }

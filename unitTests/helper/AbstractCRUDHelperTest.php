@@ -37,15 +37,9 @@ class AbstractCRUDHelperTest extends TestCase
     /**
     * @test
     */
-    public function formatReadSql_validClass_correctlyFormattedSql(){
-
-    }
-    /**
-    * @test
-    */
     public function formatProperties_validClass_correctlyFormattedProperties(){
         $cocktail = new Cocktail();
-        $expectedProperties = ["name", "description", "recipe", "img_path"];
+        $expectedProperties = "name, description, recipe, img_path";
 
         $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail);
 

@@ -15,32 +15,26 @@ use app\helper\AbstractCRUDHelper;
 abstract class AbstractCRUD
 {
     private $dbHandler;
+    private $helper;
     public function __construct()
     {
         $this->dbHandler = new DBHandler();
-        // OLD FOR REPORT
-//        $helper = new AbstractCRUDHelper();
-//        $this->tableName = $helper->getClassName($model);
-//        $hey = $this->getTable($model);
-//        var_dump($hey);
+        $this->helper = new AbstractCRUDHelper();
     }
 
     public function create(){}
 
     public function read($id){
-        $helper = new AbstractCRUDHelper();
+        $fields = $this->helper->formatProperties($this);
 
-//        $helper->formatReadSql($this);
-        $helper->formatProperties($this);
-//        $this->dbHandler->initializeConnection();
-//        // prepare the query
-//        $stmt = $this->dbHandler->pdo->prepare('SELECT * FROM '.$this->getTableName().' WHERE id = :id');
-//        // execute the query
-//        $stmt->execute(['id' => $id]);
-//        // Fetch all the data
-//        $entity = $stmt->fetchAll();
-//        return $entity;
-        return "hej";
+        $this->dbHandler->initializeConnection();
+        // prepare the query
+        $stmt = $this->dbHandler->pdo->prepare("SELECT {$fields} FROM {$this->getTableName()} WHERE id = :id");
+        // execute the query
+        $stmt->execute(['id' => $id]);
+        // Fetch all the data
+        $entity = $stmt->fetchAll();
+        return $entity;
     }
 
     public function update(){}
@@ -50,11 +44,12 @@ abstract class AbstractCRUD
     // Retrieve all data from a table
     public function readAll(){
         $this->dbHandler->initializeConnection();
+        $fields = $this->helper->formatProperties($this);
         // prepare the query
-        $stmt = $this->dbHandler->pdo->prepare('SELECT * FROM '.$this->getTableName());
-//         execute the query
+        $stmt = $this->dbHandler->pdo->prepare("SELECT $fields FROM {$this->getTableName()}");
+        // execute the query
         $stmt->execute();
-//         Fetch all the data
+        // Fetch all the data
         $entities = $stmt->fetchAll();
         return $entities;
     }
