@@ -7,12 +7,12 @@
  */
 namespace app\model;
 require_once __DIR__."/../interface/AbstractCRUD.php";
-require_once __DIR__."/model.php";
+require_once __DIR__."/Model.php";
 
 use app\interfaces\AbstractCRUD;
 
 
-class Cocktail extends model
+class Cocktail extends Model
 {
     public $name;
     public $description;
@@ -26,10 +26,10 @@ class Cocktail extends model
 }
 
 echo "<pre>";
-$c = new Cocktail();
-$co = $c->readAll();
-echo "----------- RESULT -----------".PHP_EOL;
-print_r($co); ECHO PHP_EOL;
-echo "----------- RESULT -----------".PHP_EOL;
-
-echo $c->getTableName();
+//$c = new Cocktail();
+//$co = $c->readAll();
+//echo "----------- RESULT -----------".PHP_EOL;
+//print_r($co); ECHO PHP_EOL;
+//echo "----------- RESULT -----------".PHP_EOL;
+//
+//echo $c->getTableName();

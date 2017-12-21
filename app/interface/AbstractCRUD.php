@@ -29,7 +29,7 @@ abstract class AbstractCRUD
     public function read($id){
         $this->dbHandler->initializeConnection();
         // prepare the query
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->getTable().' WHERE id = :id');
+        $stmt = $this->dbHandler->pdo->prepare('SELECT * FROM '.$this->getTableName().' WHERE id = :id');
         // execute the query
         $stmt->execute(['id' => $id]);
         // Fetch all the data
