@@ -26,10 +26,7 @@ class Cocktail extends Model
 }
 
 echo "<pre>";
-//$c = new Cocktail();
-//$co = $c->readAll();
-//echo "----------- RESULT -----------".PHP_EOL;
-//print_r($co); ECHO PHP_EOL;
-//echo "----------- RESULT -----------".PHP_EOL;
-//
+$c = new Cocktail();
+$co = $c->read(2);
+
 //echo $c->getTableName();

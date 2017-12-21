@@ -24,23 +24,32 @@ class AbstractCRUDHelperTest extends TestCase
     {
         $this->abstractCRUDHelper = new AbstractCRUDHelper();
     }
-    // NOT USED CAN BE USED IN REPORT?
-//    /**
-//    * @test
-//    * @expectedException TypeError
-//    */
-//    public function getClassName_integer_invalidArgumentException(){
-//        $this->abstractCRUDHelper->getClassName(10);
-//        $this->expectException(TypeError::class);
-//    }
 
     /**
     * @test
     */
     public function getTableName_validModel_className(){
         $cocktail = new Cocktail();
-        $result = $this->abstractCRUDHelper->getTableName($cocktail);
+        $result = $this->abstractCRUDHelper->getTableNameFromClass($cocktail);
         $this->assertEquals('cocktail', $result);
+    }
+
+    /**
+    * @test
+    */
+    public function formatReadSql_validClass_correctlyFormattedSql(){
+
+    }
+    /**
+    * @test
+    */
+    public function formatProperties_validClass_correctlyFormattedProperties(){
+        $cocktail = new Cocktail();
+        $expectedProperties = ["name", "description", "recipe", "img_path"];
+
+        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail);
+
+        $this->assertEquals($expectedProperties, $actualProperties);
     }
 
 }

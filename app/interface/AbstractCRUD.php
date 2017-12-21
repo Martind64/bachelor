@@ -10,6 +10,7 @@ require_once __DIR__."../../DBHandler.php";
 require_once __DIR__."/../helper/AbstractCRUDHelper.php";
 
 use app\DBHandler;
+use app\helper\AbstractCRUDHelper;
 
 abstract class AbstractCRUD
 {
@@ -27,14 +28,19 @@ abstract class AbstractCRUD
     public function create(){}
 
     public function read($id){
-        $this->dbHandler->initializeConnection();
-        // prepare the query
-        $stmt = $this->dbHandler->pdo->prepare('SELECT * FROM '.$this->getTableName().' WHERE id = :id');
-        // execute the query
-        $stmt->execute(['id' => $id]);
-        // Fetch all the data
-        $entity = $stmt->fetchAll();
-        return $entity;
+        $helper = new AbstractCRUDHelper();
+
+//        $helper->formatReadSql($this);
+        $helper->formatProperties($this);
+//        $this->dbHandler->initializeConnection();
+//        // prepare the query
+//        $stmt = $this->dbHandler->pdo->prepare('SELECT * FROM '.$this->getTableName().' WHERE id = :id');
+//        // execute the query
+//        $stmt->execute(['id' => $id]);
+//        // Fetch all the data
+//        $entity = $stmt->fetchAll();
+//        return $entity;
+        return "hej";
     }
 
     public function update(){}
