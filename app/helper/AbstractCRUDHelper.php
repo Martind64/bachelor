@@ -14,19 +14,6 @@ use app\model\model;
 
 class AbstractCRUDHelper
 {
-    public function getTableNameFromClass(Model $class){
-        // Get the class name with namespace
-        $classWithNamespace = get_class($class);
-
-        // Class name taken after the last "\"
-        $className = substr($classWithNamespace, strrpos($classWithNamespace, '\\') + 1);
-
-        // Database tables are lower case
-        $className = strtolower($className);
-
-        return $className;
-    }
-
     public function formatCreateSql(Model $class){
     }
 
@@ -35,9 +22,6 @@ class AbstractCRUDHelper
 
         // Get the properties of the object
         $properties = get_object_vars($class);
-        echo "----------- RESULT -----------".PHP_EOL;
-        print_r($properties); ECHO PHP_EOL;
-        echo "----------- RESULT -----------".PHP_EOL;
         // Get the properties as values in the array instead
         $properties = array_keys($properties);
 

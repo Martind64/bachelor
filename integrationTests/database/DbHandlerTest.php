@@ -19,10 +19,11 @@ class DbHandlerTest extends TestCase
     public function initializeConnection_whenCalled_changedPDOProperty(){
         $dbHandler = new DBHandler();
 
-        $firstStateOfPdo = $dbHandler->pdo;
+        $firstStateOfProperty = $dbHandler->pdo;
         $dbHandler->initializeConnection();
+        $propertyStateAfterMethodIsCalled = $dbHandler->pdo;
 
-        $this->assertNotEquals($firstStateOfPdo, $dbHandler->pdo);
+        $this->assertNotEquals($firstStateOfProperty, $propertyStateAfterMethodIsCalled);
     }
 
     /**
@@ -32,7 +33,9 @@ class DbHandlerTest extends TestCase
         $dbHandler = new DBHandler();
         $dbHandler->initializeConnection();
 
-        $this->assertInstanceOf(PDO::class, $dbHandler->pdo);
+        $expectedPdoObject = PDO::class;
+
+        $this->assertInstanceOf($expectedPdoObject, $dbHandler->pdo);
     }
 
 }

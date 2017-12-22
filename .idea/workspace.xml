@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b406d174-5a10-4c5f-ba1a-7339f51a196d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/model/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/f71449f0-c5c0-4fd1-871f-5d2a3dc1fb5d.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/f71449f0-c5c0-4fd1-871f-5d2a3dc1fb5d.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/unitTests/model/modelTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helper/AbstractCRUDHelper.php" afterPath="$PROJECT_DIR$/app/helper/AbstractCRUDHelper.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/interface/AbstractCRUD.php" afterPath="$PROJECT_DIR$/app/interface/AbstractCRUD.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/Cocktail.php" afterPath="$PROJECT_DIR$/app/model/Cocktail.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/Model.php" afterPath="$PROJECT_DIR$/app/model/Model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/integrationTests/database/DbHandlerTest.php" afterPath="$PROJECT_DIR$/integrationTests/database/DbHandlerTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unitTests/helper/AbstractCRUDHelperTest.php" afterPath="$PROJECT_DIR$/unitTests/helper/AbstractCRUDHelperTest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,12 +47,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Cocktail.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Cocktail.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/model/Cocktail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="187">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractCRUD.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/interface/AbstractCRUD.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+              <folding>
+                <element signature="e#219#237#0#PHP" expanded="true" />
+                <marker date="1513979669717" expanded="true" signature="738:798" ph="SELECT ${{$f... " />
+                <marker date="1513979669717" expanded="true" signature="1292:1312" ph="SELECT ${$fi... $" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,30 +74,11 @@
       <file leaf-file-name="Model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/model/Model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+            <state relative-caret-position="204">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#84#118#0#PHP" expanded="true" />
                 <element signature="e#153#236#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractCRUD.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/interface/AbstractCRUD.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-              <folding>
-                <element signature="e#219#237#0#PHP" expanded="true" />
-                <marker date="1513886081988" expanded="true" signature="739:761" ph="SELECT ${{$f... " />
-                <marker date="1513886081988" expanded="true" signature="739:784" ph="SELECT ${{$f... " />
-                <marker date="1513886081988" expanded="true" signature="739:799" ph="SELECT ${{$f... " />
-                <marker date="1513886081988" expanded="true" signature="739:801" ph="SELECT ${$fi... " />
-                <marker date="1513886081988" expanded="true" signature="739:869" ph="SELECT ${{$f... " />
-                <marker date="1513886081988" expanded="true" signature="785:799" ph="SELECT * FRO... ${$this-&gt;tableName}" />
-                <marker date="1513886081988" expanded="true" signature="1287:1307" ph="SELECT ${$fi... $" />
               </folding>
             </state>
           </provider>
@@ -108,14 +104,16 @@
         <option value="$PROJECT_DIR$/app/interface/Model.php" />
         <option value="$PROJECT_DIR$/integrationTests/model/CocktailTest.php" />
         <option value="$PROJECT_DIR$/app/model/model.php" />
+        <option value="$PROJECT_DIR$/integrationTests/controller/CocktailControllerTest.php" />
+        <option value="$PROJECT_DIR$/app/model/User.php" />
         <option value="$PROJECT_DIR$/app/DBHandler.php" />
         <option value="$PROJECT_DIR$/integrationTests/database/DbHandlerTest.php" />
-        <option value="$PROJECT_DIR$/integrationTests/controller/CocktailControllerTest.php" />
-        <option value="$PROJECT_DIR$/app/model/Cocktail.php" />
-        <option value="$PROJECT_DIR$/app/model/User.php" />
-        <option value="$PROJECT_DIR$/unitTests/helper/AbstractCRUDHelperTest.php" />
-        <option value="$PROJECT_DIR$/app/helper/AbstractCRUDHelper.php" />
         <option value="$PROJECT_DIR$/app/interface/AbstractCRUD.php" />
+        <option value="$PROJECT_DIR$/app/helper/AbstractCRUDHelper.php" />
+        <option value="$PROJECT_DIR$/unitTests/helper/AbstractCRUDHelperTest.php" />
+        <option value="$PROJECT_DIR$/unitTests/model/modelTest.php" />
+        <option value="$PROJECT_DIR$/app/model/Cocktail.php" />
+        <option value="$PROJECT_DIR$/app/model/Model.php" />
       </list>
     </option>
   </component>
@@ -127,10 +125,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="40" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="170" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -148,6 +146,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -165,12 +164,6 @@
               <item name="bachelor" type="b2602c69:ProjectViewProjectNode" />
               <item name="bachelor" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="helper" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="bachelor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bachelor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="interface" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -182,19 +175,29 @@
             <path>
               <item name="bachelor" type="b2602c69:ProjectViewProjectNode" />
               <item name="bachelor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="unitTests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="integrationTests" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="bachelor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bachelor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="integrationTests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="bachelor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bachelor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="integrationTests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="bachelor" type="b2602c69:ProjectViewProjectNode" />
               <item name="bachelor" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="unitTests" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="helper" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -233,33 +236,34 @@
       <workItem from="1513593004882" duration="2850000" />
       <workItem from="1513599696234" duration="17803000" />
       <workItem from="1513795690700" duration="10780000" />
-      <workItem from="1513842677519" duration="13414000" />
+      <workItem from="1513842677519" duration="15037000" />
+      <workItem from="1513953403706" duration="10817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44847000" />
+    <option name="totallyTimeSpent" value="57287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1748401" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17643923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18763326" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -274,6 +278,66 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/model/Cocktail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/model/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#84#118#0#PHP" expanded="true" />
+            <element signature="e#153#236#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/interface/AbstractCRUD.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="34" lean-forward="true" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding>
+            <element signature="e#219#237#0#PHP" expanded="true" />
+            <marker date="1513979669717" expanded="true" signature="738:798" ph="SELECT ${{$f... " />
+            <marker date="1513979669717" expanded="true" signature="1292:1312" ph="SELECT ${$fi... $" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DBHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unitTests/helper/AbstractCRUDHelperTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <element signature="e#7#30#0#PHP" expanded="true" />
+            <element signature="e#219#302#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helper/AbstractCRUDHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="47" column="16" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+          <folding>
+            <element signature="e#212#244#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/model/Cocktail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -318,7 +382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -328,13 +391,8 @@
           <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
           <folding>
             <element signature="e#219#237#0#PHP" expanded="true" />
-            <marker date="1513886081988" expanded="true" signature="739:761" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:784" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:799" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:801" ph="SELECT ${$fi... " />
-            <marker date="1513886081988" expanded="true" signature="739:869" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="785:799" ph="SELECT * FRO... ${$this-&gt;tableName}" />
-            <marker date="1513886081988" expanded="true" signature="1287:1307" ph="SELECT ${$fi... $" />
+            <marker date="1513979669717" expanded="true" signature="738:798" ph="SELECT ${{$f... " />
+            <marker date="1513979669717" expanded="true" signature="1292:1312" ph="SELECT ${$fi... $" />
           </folding>
         </state>
       </provider>
@@ -351,7 +409,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="39" lean-forward="false" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -369,13 +426,8 @@
           <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
           <folding>
             <element signature="e#219#237#0#PHP" expanded="true" />
-            <marker date="1513886081988" expanded="true" signature="739:761" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:784" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:799" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:801" ph="SELECT ${$fi... " />
-            <marker date="1513886081988" expanded="true" signature="739:869" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="785:799" ph="SELECT * FRO... ${$this-&gt;tableName}" />
-            <marker date="1513886081988" expanded="true" signature="1287:1307" ph="SELECT ${$fi... $" />
+            <marker date="1513979669717" expanded="true" signature="738:798" ph="SELECT ${{$f... " />
+            <marker date="1513979669717" expanded="true" signature="1292:1312" ph="SELECT ${$fi... $" />
           </folding>
         </state>
       </provider>
@@ -440,7 +492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -452,46 +503,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/DBHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/integrationTests/database/DbHandlerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-          <folding>
-            <element signature="e#56#74#0#PHP" expanded="false" />
-            <element signature="e#108#191#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/integrationTests/controller/CocktailControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/integrationTests/controller/CocktailControllerTest.php" />
     <entry file="file://$PROJECT_DIR$/app/controller/cocktail/CocktailController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/integrationTests/model/CocktailTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -506,27 +522,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helper/AbstractCRUDHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding>
-            <element signature="e#212#244#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/unitTests/helper/AbstractCRUDHelperTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#30#0#PHP" expanded="true" />
-            <element signature="e#219#302#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -546,18 +541,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/Cocktail.php">
+    <entry file="file://$PROJECT_DIR$/integrationTests/database/DbHandlerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="459">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+          <folding>
+            <element signature="e#108#191#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/integrationTests/model/CocktailTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unitTests/model/modelTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="40" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding>
+            <element signature="e#7#30#0#PHP" expanded="true" />
+            <element signature="e#169#253#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unitTests/helper/AbstractCRUDHelperTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#30#0#PHP" expanded="true" />
+            <element signature="e#219#302#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helper/AbstractCRUDHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#212#244#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DBHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/interface/AbstractCRUD.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding>
+            <element signature="e#219#237#0#PHP" expanded="true" />
+            <marker date="1513979669717" expanded="true" signature="738:798" ph="SELECT ${{$f... " />
+            <marker date="1513979669717" expanded="true" signature="1292:1312" ph="SELECT ${$fi... $" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/model/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="204">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#84#118#0#PHP" expanded="true" />
             <element signature="e#153#236#0#PHP" expanded="false" />
@@ -565,20 +622,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/interface/AbstractCRUD.php">
+    <entry file="file://$PROJECT_DIR$/app/model/Cocktail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-          <folding>
-            <element signature="e#219#237#0#PHP" expanded="true" />
-            <marker date="1513886081988" expanded="true" signature="739:761" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:784" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:799" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="739:801" ph="SELECT ${$fi... " />
-            <marker date="1513886081988" expanded="true" signature="739:869" ph="SELECT ${{$f... " />
-            <marker date="1513886081988" expanded="true" signature="785:799" ph="SELECT * FRO... ${$this-&gt;tableName}" />
-            <marker date="1513886081988" expanded="true" signature="1287:1307" ph="SELECT ${$fi... $" />
-          </folding>
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

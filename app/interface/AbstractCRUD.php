@@ -26,7 +26,6 @@ abstract class AbstractCRUD
 
     public function read($id){
         $fields = $this->helper->formatProperties($this);
-
         $this->dbHandler->initializeConnection();
         // prepare the query
         $stmt = $this->dbHandler->pdo->prepare("SELECT {$fields} FROM {$this->getTableName()} WHERE id = :id");
@@ -37,9 +36,9 @@ abstract class AbstractCRUD
         return $entity;
     }
 
-    public function update(){}
+    public function update($id){}
 
-    public function delete(){}
+    public function delete($id){}
 
     // Retrieve all data from a table
     public function readAll(){
