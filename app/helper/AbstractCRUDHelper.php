@@ -27,6 +27,8 @@ class AbstractCRUDHelper
 
         // Foreach of the properties check for a capital letters and add an underscore instead
         foreach ($properties as $propertyKey => $property){
+            // Take the first letter and make it lowercase
+            $property = lcfirst($property);
             // Put capital letters into an array called $matche
             if (preg_match_all("/[A-Z]/", $property, $matches)){
                 //  Foreach of the matches add an underscore behind the capital letter

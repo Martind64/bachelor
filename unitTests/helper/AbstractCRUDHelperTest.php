@@ -29,7 +29,7 @@ class AbstractCRUDHelperTest extends TestCase
     /**
     * @test
     */
-    public function formatProperties_validClass_correctlyFormattedProperties(){
+    public function formatProperties_classWithCamelCaseProperties_correctlyFormattedProperties(){
         $cocktail = new Cocktail();
         $expectedProperties = "name, description, recipe, img_path";
 
@@ -38,4 +38,28 @@ class AbstractCRUDHelperTest extends TestCase
         $this->assertEquals($expectedProperties, $actualProperties);
     }
 
+    /**
+     * @test
+     */
+    public function formatProperties_classWithFirstLetterCapitalProperties_correctlyFormattedProperties(){
+        $cocktail = new Cocktail();
+        $cocktail->Season = "summer";
+        $expectedProperties = "name, description, recipe, img_path, season";
+
+        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail);
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
+    /**
+     * @test
+     */
+    public function formatProperties_classWithSnakeCaseProperties_correctlyFormattedProperties(){
+        $cocktail = new Cocktail();
+        $cocktail->last_name = "";
+        $expectedProperties = "name, description, recipe, img_path, last_name";
+
+        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail);
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
 }

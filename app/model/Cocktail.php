@@ -20,6 +20,6 @@ class Cocktail extends Model
 $c = new Cocktail();
 $co = $c->readAll();
 echo "<pre>";
-echo "----------- RESULT -----------".PHP_EOL;
-print_r($co); ECHO PHP_EOL;
-echo "----------- RESULT -----------".PHP_EOL;
+//echo "----------- RESULT -----------".PHP_EOL;
+//print_r($co); ECHO PHP_EOL;
+//echo "----------- RESULT -----------".PHP_EOL;
