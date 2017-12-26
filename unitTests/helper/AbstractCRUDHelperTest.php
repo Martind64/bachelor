@@ -62,4 +62,54 @@ class AbstractCRUDHelperTest extends TestCase
 
         $this->assertEquals($expectedProperties, $actualProperties);
     }
+
+    /**
+     * @test
+     */
+    public function formatProperties_validClassReturnNullValuePropertiesFalse_correctlyFormattedProperties(){
+        $cocktail = new Cocktail();
+        $cocktail->name = "Mojito";
+        $cocktail->description = "A cold summer drink";
+        $expectedProperties = "name, description";
+
+        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail, false);
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
+
+    /**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function formatValues_classOnlyNullValueProperties_correctlyFormattedProperties(){
+        $cocktail = new Cocktail();
+
+        $this->abstractCRUDHelper->formatValues($cocktail);
+    }
+
+    /**
+     * @test
+     */
+    public function formatValues_classWithFirstLetterCapitalProperties_correctlyFormattedProperties(){
+        $cocktail = new Cocktail();
+        $cocktail->Season = "summer";
+        $expectedProperties = ":Season";
+
+        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail);
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
+    /**
+     * @test
+     */
+    public function formatValues_classWithSnakeCaseProperties_correctlyFormattedProperties(){
+        $cocktail = new Cocktail();
+        $cocktail->name = "Mojito";
+        $cocktail->description = "good drink";
+        $expectedProperties = ":name, :description";
+
+        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail);
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
 }

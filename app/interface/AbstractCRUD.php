@@ -22,7 +22,21 @@ abstract class AbstractCRUD
         $this->helper = new AbstractCRUDHelper();
     }
 
-    public function create(){}
+    public function create(){
+
+        // Prepare the fields and values for the query string
+        $fields = $this->helper->formatProperties($this, FALSE);
+        $values = $this->helper->formatValues($this);
+        $data = $this->helper->formatData($this);
+
+
+        $this->dbHandler->initializeConnection();
+        // prepare the query
+//        $stmt = $this->dbHandler->pdo->prepare("INSERT INTO {$this->getTableName()} VALUES ({$values})");
+        $stmt = $this->dbHandler->pdo->prepare("INSERT INTO {$this->getTableName()} ({$fields}) VALUES ($values)");
+        // execute the query
+        $stmt->execute($data);
+    }
 
     public function read($id){
         $fields = $this->helper->formatProperties($this);

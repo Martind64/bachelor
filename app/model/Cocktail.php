@@ -18,7 +18,9 @@ class Cocktail extends Model
 }
 
 $c = new Cocktail();
-$co = $c->readAll();
+$c->name = "Drink";
+$c->description = "Very good";
+$c->create();
 echo "<pre>";
 //echo "----------- RESULT -----------".PHP_EOL;
 //print_r($co); ECHO PHP_EOL;
