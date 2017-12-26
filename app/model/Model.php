@@ -5,6 +5,7 @@ require_once __DIR__."/../interface/AbstractCRUD.php";
 
 use app\helper\AbstractCRUDHelper;
 use app\interfaces\AbstractCRUD;
+use DateTime;
 
 /**
  * Created by PhpStorm.
@@ -15,6 +16,7 @@ use app\interfaces\AbstractCRUD;
 
 class model extends AbstractCRUD
 {
+
     // Return the name of the DB table of the model
     public function getTableName(){
         // Get the class name with namespace

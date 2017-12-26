@@ -16,11 +16,9 @@ use Prophecy\Exception\InvalidArgumentException;
 
 class AbstractCRUDHelper
 {
-    public function formatCreateSql(Model $class){
-    }
 
     // Take CamelCase and replaces with snake case
-    public function formatProperties(Model $class, $returnNullValueProperties = true){
+    public function formatProperties(Model $class, $returnNullValueProperties = true, $action = ""){
 
         // Get the properties of the object
         $propertiesAndValues = get_object_vars($class);
@@ -34,10 +32,6 @@ class AbstractCRUDHelper
             }
         }
 
-        // Throw exception if no data was provided
-        if (empty($propertiesAndValues)){
-            throw new InvalidArgumentException("You can not save ");
-        }
 
         // Get the properties as values in the array instead
         $properties = array_keys($propertiesAndValues);
@@ -52,6 +46,10 @@ class AbstractCRUDHelper
                 foreach ($matches[0] as $key => $capitalLetter){
                     $properties[$propertyKey] = substr_replace($property, "_{$matches[0][$key]}", strpos($property, $matches[0][$key]), 1);
                 }
+            }
+            // If the action is an update make the query look like this: name = :name, img_path = :imgPtah
+            if ($action == "update"){
+                $properties[$propertyKey] = "{$properties[$propertyKey]} = :{$property}";
             }
         }
         // Set all properties to lowercase before returning them
@@ -74,10 +72,10 @@ class AbstractCRUDHelper
         }
         // Throw exception if no data was provided
         if (empty($propertiesAndValues)){
-            throw new InvalidArgumentException("You can not save ");
+            throw new InvalidArgumentException("You can not use this method without adding values to the properties of the class ");
         }
 
-        // Get the properties as values in the array instead
+        // Get the properties that are the keys
         $fields = array_keys($propertiesAndValues);
 
         // Foreach of the properties check for a capital letters and add an underscore instead
@@ -85,12 +83,16 @@ class AbstractCRUDHelper
             // Add a semicolon behind the property names so the can fit the VALUES part of the query
             $fields[$propertyKey] = ":".$property;
         }
-        
+
+        // Set all properties to lowercase for consistency
+        $fields = array_map("strtolower", $fields);
+
         // Return properties as a comma separated string
         $fields = implode(", ",$fields);
 
         return $fields;
     }
+
 
     public function formatData(Model $class){
         // Get the properties of the object
@@ -103,9 +105,12 @@ class AbstractCRUDHelper
             }
         }
 
+        // Set all properties to lowercase for consistency
+        $propertiesAndValues = array_change_key_case($propertiesAndValues, CASE_LOWER);
+
         // Throw exception if no data was provided
         if (empty($propertiesAndValues)){
-            throw new InvalidArgumentException("You can not save ");
+            throw new InvalidArgumentException("You can not use this method without adding values to the properties of the class ");
         }
 
         return $propertiesAndValues;

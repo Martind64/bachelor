@@ -32,7 +32,6 @@ abstract class AbstractCRUD
 
         $this->dbHandler->initializeConnection();
         // prepare the query
-//        $stmt = $this->dbHandler->pdo->prepare("INSERT INTO {$this->getTableName()} VALUES ({$values})");
         $stmt = $this->dbHandler->pdo->prepare("INSERT INTO {$this->getTableName()} ({$fields}) VALUES ($values)");
         // execute the query
         $stmt->execute($data);
@@ -50,7 +49,20 @@ abstract class AbstractCRUD
         return $entity;
     }
 
-    public function update($id){}
+    public function update($id){
+        // Prepare the fields and values for the query string
+        $fields = $this->helper->formatProperties($this, FALSE, "update");
+        $data = $this->helper->formatData($this);
+        // Add the id to the data array
+        $data['id'] = $id;
+
+        $this->dbHandler->initializeConnection();
+
+        // prepare the query
+        $stmt = $this->dbHandler->pdo->prepare("UPDATE {$this->getTableName()} SET {$fields} where id = :id");
+        // execute the query
+        $stmt->execute($data);
+    }
 
     public function delete($id){}
 
