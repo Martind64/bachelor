@@ -19,11 +19,13 @@ class Cocktail extends Model
 
 $c = new Cocktail();
 $c->name = "Drink";
-$c->description = "god damn";
+$c->description = "damn";
 $c->imgPath = "path/to/img";
-$c->update(50);
-//$c->create();
-//echo "<pre>";
-//echo "----------- RESULT -----------".PHP_EOL;
-//print_r($co); ECHO PHP_EOL;
-//echo "----------- RESULT -----------".PHP_EOL;
+//$res = $c->read(50);
+//$res = $c->readAll(50);
+//$res = $c->update(50);
+$c->create();
+echo "<pre>";
+echo "----------- RESULT -----------".PHP_EOL;
+//print_r($res); ECHO PHP_EOL;
+echo "----------- RESULT -----------".PHP_EOL;

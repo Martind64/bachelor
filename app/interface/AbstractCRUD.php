@@ -11,6 +11,7 @@ require_once __DIR__."/../helper/AbstractCRUDHelper.php";
 
 use app\DBHandler;
 use app\helper\AbstractCRUDHelper;
+use Prophecy\Exception\InvalidArgumentException;
 
 abstract class AbstractCRUD
 {
@@ -26,7 +27,7 @@ abstract class AbstractCRUD
 
         // Prepare the fields and values for the query string
         $fields = $this->helper->formatProperties($this, FALSE);
-        $values = $this->helper->formatValues($this);
+        $values = $this->helper->formatValues($this, "create");
         $data = $this->helper->formatData($this);
 
 
@@ -38,6 +39,9 @@ abstract class AbstractCRUD
     }
 
     public function read($id){
+        if (!is_int($id)){
+            throw new InvalidArgumentException("Read Method only accepts datatype int");
+        }
         $fields = $this->helper->formatProperties($this);
         $this->dbHandler->initializeConnection();
         // prepare the query
@@ -51,7 +55,7 @@ abstract class AbstractCRUD
 
     public function update($id){
         // Prepare the fields and values for the query string
-        $fields = $this->helper->formatProperties($this, FALSE, "update");
+        $fields = $this->helper->formatValues($this, "update");
         $data = $this->helper->formatData($this);
         // Add the id to the data array
         $data['id'] = $id;

@@ -6,10 +6,7 @@
  * Time: 8:22 PM
  */
 namespace app\helper;
-require_once __DIR__."/../interface/AbstractCRUD.php";
-require_once __DIR__."/../model/Model.php";
 
-use app\interfaces\AbstractCRUD;
 use app\model\model;
 use PHPUnit\Framework\Constraint\IsFalse;
 use Prophecy\Exception\InvalidArgumentException;
@@ -17,13 +14,11 @@ use Prophecy\Exception\InvalidArgumentException;
 class AbstractCRUDHelper
 {
 
-    // Take CamelCase and replaces with snake case
-    public function formatProperties(Model $class, $returnNullValueProperties = true, $action = ""){
-
+    public function formatProperties(Model $class, $returnNullValueProperties = true){
         // Get the properties of the object
         $propertiesAndValues = get_object_vars($class);
 
-        // If null value properties should not be returned, remove them from the array
+        // Null value properties should not be returned, remove them from the array
         if (!$returnNullValueProperties){
             foreach ($propertiesAndValues as $property => $value){
                 if ($value == null){
@@ -32,7 +27,6 @@ class AbstractCRUDHelper
             }
         }
 
-
         // Get the properties as values in the array instead
         $properties = array_keys($propertiesAndValues);
 
@@ -40,16 +34,12 @@ class AbstractCRUDHelper
         foreach ($properties as $propertyKey => $property){
             // Take the first letter and make it lowercase
             $property = lcfirst($property);
-            // Put capital letters into an array called $matche
+            // Put capital letters into an array
             if (preg_match_all("/[A-Z]/", $property, $matches)){
                 //  Foreach of the matches add an underscore behind the capital letter
                 foreach ($matches[0] as $key => $capitalLetter){
                     $properties[$propertyKey] = substr_replace($property, "_{$matches[0][$key]}", strpos($property, $matches[0][$key]), 1);
                 }
-            }
-            // If the action is an update make the query look like this: name = :name, img_path = :imgPtah
-            if ($action == "update"){
-                $properties[$propertyKey] = "{$properties[$propertyKey]} = :{$property}";
             }
         }
         // Set all properties to lowercase before returning them
@@ -60,7 +50,7 @@ class AbstractCRUDHelper
         return $properties;
     }
 
-    public function formatValues(Model $class){
+    public function formatValues(Model $class, $action){
         // Get the properties of the object
         $propertiesAndValues = get_object_vars($class);
 
@@ -72,7 +62,7 @@ class AbstractCRUDHelper
         }
         // Throw exception if no data was provided
         if (empty($propertiesAndValues)){
-            throw new InvalidArgumentException("You can not use this method without adding values to the properties of the class ");
+            throw new InvalidArgumentException("You can not use this method without assigning values to the properties of the class ");
         }
 
         // Get the properties that are the keys
@@ -80,8 +70,23 @@ class AbstractCRUDHelper
 
         // Foreach of the properties check for a capital letters and add an underscore instead
         foreach ($fields as $propertyKey => $property){
-            // Add a semicolon behind the property names so the can fit the VALUES part of the query
-            $fields[$propertyKey] = ":".$property;
+            // Take the first letter and make it lowercase
+            $property = lcfirst($property);
+            // Put capital letters into an array
+            if (preg_match_all("/[A-Z]/", $property, $matches)){
+                //  Foreach of the matches add an underscore behind the capital letter
+                foreach ($matches[0] as $key => $capitalLetter){
+                    $fields[$propertyKey] = substr_replace($property, "_{$matches[0][$key]}", strpos($property, $matches[0][$key]), 1);
+                }
+            }
+            // If the action is create the values should be prefixed with a semicolon
+            if($action == "create"){
+                $fields[$propertyKey] = ":".$property;
+            }
+            // If the action is update the values should have the following structure $columnName = $variable
+            if ($action == "update"){
+                $fields[$propertyKey] = "{$fields[$propertyKey]} = :{$property}";
+            }
         }
 
         // Set all properties to lowercase for consistency
@@ -110,7 +115,7 @@ class AbstractCRUDHelper
 
         // Throw exception if no data was provided
         if (empty($propertiesAndValues)){
-            throw new InvalidArgumentException("You can not use this method without adding values to the properties of the class ");
+            throw new InvalidArgumentException("You can not use this method without assigning values to the properties of the class ");
         }
 
         return $propertiesAndValues;

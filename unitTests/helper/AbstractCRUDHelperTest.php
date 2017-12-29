@@ -26,6 +26,32 @@ class AbstractCRUDHelperTest extends TestCase
         $this->abstractCRUDHelper = new AbstractCRUDHelper();
     }
 
+    /**
+    * @test
+    * @dataProvider propertyProvider
+    */
+    public function formatProperties_variousPropertyNames_correctlyFormattedProperties($cocktail, $expected){
+        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail);
+
+        $this->assertEquals($expected, $actualProperties);
+    }
+
+    public function propertyProvider(){
+        $cocktailCamelCaseProperties = new CocktailTestObject();
+
+        $cocktailFirstLetterCapitalProperties = new CocktailTestObject();
+        $cocktailFirstLetterCapitalProperties->Season = "";
+
+        $cocktailWithSnakeCaseProperties = new CocktailTestObject();
+        $cocktailWithSnakeCaseProperties->last_name = "name";
+
+        return [
+            "camelCaseProperties" => [$cocktailCamelCaseProperties, "name, description, recipe, img_path"],
+            "firstLetterCapitalProperties" => [$cocktailFirstLetterCapitalProperties, "name, description, recipe, img_path, season"],
+            "snakeCaseProperties" => [$cocktailWithSnakeCaseProperties, "name, description, recipe, img_path, last_name"]
+        ];
+    }
+
 
     /**
     * @test
@@ -38,17 +64,7 @@ class AbstractCRUDHelperTest extends TestCase
 
         $this->assertEquals($expectedProperties, $actualProperties);
     }
-    /**
-     * @test
-     */
-    public function formatProperties_validClassUpdateAction_correctlyFormattedProperties(){
-        $cocktail = new CocktailTestObject();
-        $expectedProperties = "name = :name, description = :description, recipe = :recipe, img_path = :imgpath";
 
-        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail, true, "update");
-
-        $this->assertEquals($expectedProperties, $actualProperties);
-    }
     /**
      * @test
      */
@@ -95,7 +111,7 @@ class AbstractCRUDHelperTest extends TestCase
     public function formatValues_classOnlyNullValueProperties_correctlyFormattedProperties(){
         $cocktail = new CocktailTestObject();
 
-        $this->abstractCRUDHelper->formatValues($cocktail);
+        $this->abstractCRUDHelper->formatValues($cocktail, "create");
     }
 
     /**
@@ -106,7 +122,7 @@ class AbstractCRUDHelperTest extends TestCase
         $cocktail->Season = "summer";
         $expectedProperties = ":season";
 
-        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail);
+        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail, "create");
 
         $this->assertEquals($expectedProperties, $actualProperties);
     }
@@ -119,7 +135,31 @@ class AbstractCRUDHelperTest extends TestCase
         $cocktail->description = "good drink";
         $expectedProperties = ":name, :description";
 
-        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail);
+        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail, "create");
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
+
+    /**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function formatValues_updateClassNoPropertyValues_invalidArgumentException(){
+        $cocktail = new CocktailTestObject();
+        $this->abstractCRUDHelper->formatValues($cocktail, "update");
+    }
+
+    /**
+    * @test
+    */
+    public function formatValues_updateValidClass_correctlyFormattedProperties(){
+        $cocktail = new CocktailTestObject();
+        $cocktail->name = "Mojito";
+        $cocktail->description = "good drink";
+        $cocktail->imgPath = "path/to/img";
+        $expectedProperties = "name = :name, description = :description, img_path = :imgpath";
+
+        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail, "update");
 
         $this->assertEquals($expectedProperties, $actualProperties);
     }
