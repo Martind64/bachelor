@@ -98,7 +98,6 @@ class AbstractCRUDHelper
         return $fields;
     }
 
-
     public function formatData(Model $class){
         // Get the properties of the object
         $propertiesAndValues = get_object_vars($class);

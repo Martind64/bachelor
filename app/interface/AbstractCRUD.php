@@ -52,6 +52,9 @@ abstract class AbstractCRUD
     }
 
     public function update($id){
+        if (!is_int($id)){
+            throw new InvalidArgumentException("Read Method only accepts datatype int");
+        }
         // Prepare the fields and values for the query string
         $fields = $this->helper->formatValues($this, "update");
         $data = $this->helper->formatData($this);

@@ -38,7 +38,7 @@ class AbstractCRUDTest extends TestCase
     * @expectedException InvalidArgumentException
     */
     public function read_string_invalidArgumentException(){
-        $this->cocktail->read("hej");
+        $this->cocktail->read("a string");
     }
 
     /**
