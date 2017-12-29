@@ -24,12 +24,10 @@ abstract class AbstractCRUD
     }
 
     public function create(){
-
         // Prepare the fields and values for the query string
         $fields = $this->helper->formatProperties($this, FALSE);
         $values = $this->helper->formatValues($this, "create");
         $data = $this->helper->formatData($this);
-
 
         $this->dbHandler->initializeConnection();
         // prepare the query

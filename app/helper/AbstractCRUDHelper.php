@@ -110,7 +110,7 @@ class AbstractCRUDHelper
             }
         }
 
-        // Set all properties to lowercase for consistency
+        // Set all properties to lowercase so the match the values parameters
         $propertiesAndValues = array_change_key_case($propertiesAndValues, CASE_LOWER);
 
         // Throw exception if no data was provided
@@ -119,7 +119,6 @@ class AbstractCRUDHelper
         }
 
         return $propertiesAndValues;
-
     }
 
 }

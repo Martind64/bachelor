@@ -52,6 +52,19 @@ class AbstractCRUDHelperTest extends TestCase
         ];
     }
 
+    /**
+    * @test
+    */
+    public function formatProperties_returnNullValuePropertiesFalse_correctlyFormattedProperties(){
+        $cocktail = new CocktailTestObject();
+        $cocktail->name = "Mojito";
+        $cocktail->description = "good";
+        $expectedProperties = "name, description";
+        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail, FALSE);
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
+
 
     /**
     * @test
@@ -108,7 +121,7 @@ class AbstractCRUDHelperTest extends TestCase
      * @test
      * @expectedException InvalidArgumentException
      */
-    public function formatValues_classOnlyNullValueProperties_correctlyFormattedProperties(){
+    public function formatValues_classOnlyNullValuePropertiesCreate_invalidArgumentException(){
         $cocktail = new CocktailTestObject();
 
         $this->abstractCRUDHelper->formatValues($cocktail, "create");
@@ -117,19 +130,7 @@ class AbstractCRUDHelperTest extends TestCase
     /**
      * @test
      */
-    public function formatValues_classWithFirstLetterCapitalProperties_correctlyFormattedProperties(){
-        $cocktail = new CocktailTestObject();
-        $cocktail->Season = "summer";
-        $expectedProperties = ":season";
-
-        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail, "create");
-
-        $this->assertEquals($expectedProperties, $actualProperties);
-    }
-    /**
-     * @test
-     */
-    public function formatValues_classWithSnakeCaseProperties_correctlyFormattedProperties(){
+    public function formatValues_validClassCreate_correctlyFormattedValues(){
         $cocktail = new CocktailTestObject();
         $cocktail->name = "Mojito";
         $cocktail->description = "good drink";
@@ -142,9 +143,35 @@ class AbstractCRUDHelperTest extends TestCase
 
     /**
      * @test
+     */
+    public function formatValues_classWithFirstLetterCapitalPropertiesCreate_correctlyFormattedValues(){
+        $cocktail = new CocktailTestObject();
+        $cocktail->Season = "summer";
+        $expectedProperties = ":season";
+
+        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail, "create");
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
+    /**
+     * @test
+     */
+    public function formatValues_classWithSnakeCasePropertiesCreate_correctlyFormattedValues(){
+        $cocktail = new CocktailTestObject();
+        $cocktail->name = "Mojito";
+        $cocktail->snake_case_property = "snake_case";
+        $expectedProperties = ":name, :snake_case_property";
+
+        $actualProperties = $this->abstractCRUDHelper->formatValues($cocktail, "create");
+
+        $this->assertEquals($expectedProperties, $actualProperties);
+    }
+
+    /**
+     * @test
      * @expectedException InvalidArgumentException
      */
-    public function formatValues_updateClassNoPropertyValues_invalidArgumentException(){
+    public function formatValues_ClassNoPropertyValuesUpdate_invalidArgumentException(){
         $cocktail = new CocktailTestObject();
         $this->abstractCRUDHelper->formatValues($cocktail, "update");
     }
@@ -152,7 +179,7 @@ class AbstractCRUDHelperTest extends TestCase
     /**
     * @test
     */
-    public function formatValues_updateValidClass_correctlyFormattedProperties(){
+    public function formatValues_updateValidClass_correctlyFormattedValues(){
         $cocktail = new CocktailTestObject();
         $cocktail->name = "Mojito";
         $cocktail->description = "good drink";
@@ -163,4 +190,23 @@ class AbstractCRUDHelperTest extends TestCase
 
         $this->assertEquals($expectedProperties, $actualProperties);
     }
+
+    /**
+    * @test
+    */
+    public function formatData_classWithData_correctlyFormattedDatta(){
+        $cocktail = new CocktailTestObject();
+        $cocktail->name = "Mojito";
+        $cocktail->description = "Served cold";
+        $cocktail->recipe = "Contains ingredients";
+        $expectedData = [
+            "name" => "Mojito",
+            "description" => "Served cold",
+            "recipe" => "Contains ingredients"
+        ];
+        $actualData = $this->abstractCRUDHelper->formatData($cocktail);
+        $this->assertEquals($expectedData, $actualData);
+    }
+
+
 }
