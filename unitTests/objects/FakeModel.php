@@ -11,7 +11,7 @@ require_once __DIR__."/../../app/model/Model.php";
 use app\model\model;
 
 
-class CocktailTestObject extends Model
+class FakeCocktail extends Model
 {
     public $name;
     public $description;
