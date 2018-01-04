@@ -11,11 +11,10 @@ require_once __DIR__."/../../app/model/Model.php";
 use app\model\model;
 
 
-class FakeCocktail extends Model
+class FakeModel extends Model
 {
     public $name;
     public $description;
     public $recipe;
-    public $imgPath;
 
 }

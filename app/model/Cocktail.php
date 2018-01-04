@@ -17,19 +17,3 @@ class Cocktail extends Model
 
 }
 
-//$c = new Cocktail();
-//$c->name = "Drink";
-//$c->description = "damn";
-//$c->imgPath = "path/to/img";
-//$res = $c->read(50);
-//$res = $c->readAll(50);
-//$res = $c->update(50);
-//$c->create();
-//echo "<pre>";
-//echo "----------- RESULT -----------".PHP_EOL;
-//print_r($res); ECHO PHP_EOL;
-//echo "----------- RESULT$cocktail->name = "Piña Colada";
-
-//$cocktail->description = "Delicious juice and coconut cocktail";
-//$cocktail->recipe = "Blend ice cubes, pineaple juice, coconut cream and white rum";
-//$cocktail->imgPath = "path/to/img";-----------".PHP_EOL;

@@ -34,6 +34,7 @@ abstract class AbstractCRUD
         $stmt = $this->dbHandler->pdo->prepare("INSERT INTO {$this->getTableName()} ({$fields}) VALUES ($values)");
         // execute the query
         $stmt->execute($data);
+        return $this->getTableName()." has been created!";
     }
 
     public function read($id){
@@ -67,6 +68,7 @@ abstract class AbstractCRUD
         $stmt = $this->dbHandler->pdo->prepare("UPDATE {$this->getTableName()} SET {$fields} where id = :id");
         // execute the query
         $stmt->execute($data);
+        return $this->getTableName()." has been updated!";
     }
 
     public function delete($id){}

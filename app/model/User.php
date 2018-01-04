@@ -14,10 +14,6 @@ class User extends Model
     public $lastName;
     public $password;
 
-    public function __construct()
-    {
-        parent::__construct($this);
-    }
 
 }
 

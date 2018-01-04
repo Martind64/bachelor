@@ -1,12 +1,11 @@
 <?php
 
-use app\model\Cocktail;
 use PHPUnit\Framework\TestCase;
 require_once __DIR__."/../../app/helper/AbstractCRUDHelper.php";
-require_once __DIR__."/../objects/CocktailTestObject.php";
+require_once __DIR__."/../objects/FakeModel.php";
 
 use app\helper\AbstractCRUDHelper;
-use unitTests\objects\CocktailTestObject;
+use unitTests\objects\FakeModel;
 
 /**
  * Created by PhpStorm.
@@ -37,16 +36,17 @@ class AbstractCRUDHelperTest extends TestCase
     }
 
     public function formatPropertiesProvider(){
-        $cocktailCamelCaseProperties = new CocktailTestObject();
-        $cocktailFirstLetterCapitalProperties = new CocktailTestObject();
-        $cocktailFirstLetterCapitalProperties->Season = "";
-        $cocktailWithSnakeCaseProperties = new CocktailTestObject();
-        $cocktailWithSnakeCaseProperties->last_name = "name";
+        $camelCaseProperties = new FakeModel();
+        $camelCaseProperties->imgPath = "path/to/img";
+        $firstLetterCapitalProperties = new FakeModel();
+        $firstLetterCapitalProperties->Season = "";
+        $snakeCaseProperties = new FakeModel();
+        $snakeCaseProperties->last_name = "name";
 
         return [
-            "camelCaseProperties" => [$cocktailCamelCaseProperties, "name, description, recipe, img_path"],
-            "firstLetterCapitalProperties" => [$cocktailFirstLetterCapitalProperties, "name, description, recipe, img_path, season"],
-            "snakeCaseProperties" => [$cocktailWithSnakeCaseProperties, "name, description, recipe, img_path, last_name"]
+            "camelCaseProperties" => [$camelCaseProperties, "name, description, recipe, img_path"],
+            "firstLetterCapitalProperties" => [$firstLetterCapitalProperties, "name, description, recipe, season"],
+            "snakeCaseProperties" => [$snakeCaseProperties, "name, description, recipe, last_name"]
         ];
     }
 
@@ -54,11 +54,12 @@ class AbstractCRUDHelperTest extends TestCase
     * @test
     */
     public function formatProperties_returnNullValuePropertiesFalse_correctlyFormattedProperties(){
-        $cocktail = new CocktailTestObject();
-        $cocktail->name = "Mojito";
-        $cocktail->description = "good";
+        $model = new FakeModel();
+        $model->name = "Mojito";
+        $model->description = "good";
         $expectedProperties = "name, description";
-        $actualProperties = $this->abstractCRUDHelper->formatProperties($cocktail, FALSE);
+        $returnNullValues = FALSE;
+        $actualProperties = $this->abstractCRUDHelper->formatProperties($model, $returnNullValues);
 
         $this->assertEquals($expectedProperties, $actualProperties);
     }
@@ -70,9 +71,9 @@ class AbstractCRUDHelperTest extends TestCase
      * @expectedException InvalidArgumentException
      */
     public function formatValues_classOnlyNullValuePropertiesCreate_invalidArgumentException(){
-        $cocktail = new CocktailTestObject();
+        $model = new FakeModel();
 
-        $this->abstractCRUDHelper->formatValues($cocktail, "create");
+        $this->abstractCRUDHelper->formatValues($model, "create");
     }
 
     /**
@@ -85,22 +86,22 @@ class AbstractCRUDHelperTest extends TestCase
         $this->assertEquals($expectedValues, $actualValues);
     }
     public function formatValueProvider(){
-        $cocktailValidClass = new CocktailTestObject();
-        $cocktailValidClass->name = "Mojito";
-        $cocktailValidClass->imgPath = "good drink";
-        $cocktailFirstLetterCapital = new CocktailTestObject();
-        $cocktailFirstLetterCapital->Season = "summer";
-        $cocktailSnakeCase = new CocktailTestObject();
-        $cocktailSnakeCase->name = "Mojito";
-        $cocktailSnakeCase->snake_case_property = "snake_case";
+        $camelCaseProperties = new FakeModel();
+        $camelCaseProperties->name = "Mojito";
+        $camelCaseProperties->imgPath = "good drink";
+        $firstLetterCapitalProperties = new FakeModel();
+        $firstLetterCapitalProperties->Season = "summer";
+        $snakeCaseProperties = new FakeModel();
+        $snakeCaseProperties->name = "Mojito";
+        $snakeCaseProperties->snake_case_property = "snake_case";
 
         return [
-            "camelCase create action" => [$cocktailValidClass, "create", ":name, :imgpath"],
-            "camelCase update action" => [$cocktailValidClass, "update", "name = :name, img_path = :imgpath"],
-            "first letter capital create action" => [$cocktailFirstLetterCapital, "create", ":season"],
-            "first letter capital update action" => [$cocktailFirstLetterCapital, "update", "season = :season"],
-            "snake case create action" => [$cocktailSnakeCase, "create", ":name, :snake_case_property"],
-            "snake case update action" => [$cocktailSnakeCase, "update", "name = :name, snake_case_property = :snake_case_property"],
+            "camelCase create action" => [$camelCaseProperties, "create", ":name, :imgpath"],
+            "camelCase update action" => [$camelCaseProperties, "update", "name = :name, img_path = :imgpath"],
+            "first letter capital create action" => [$firstLetterCapitalProperties, "create", ":season"],
+            "first letter capital update action" => [$firstLetterCapitalProperties, "update", "season = :season"],
+            "snake case create action" => [$snakeCaseProperties, "create", ":name, :snake_case_property"],
+            "snake case update action" => [$snakeCaseProperties, "update", "name = :name, snake_case_property = :snake_case_property"],
         ];
     }
 
@@ -109,8 +110,8 @@ class AbstractCRUDHelperTest extends TestCase
      * @expectedException InvalidArgumentException
      */
     public function formatValues_ClassNoPropertyValuesUpdate_invalidArgumentException(){
-        $cocktail = new CocktailTestObject();
-        $this->abstractCRUDHelper->formatValues($cocktail, "update");
+        $model = new FakeModel();
+        $this->abstractCRUDHelper->formatValues($model, "update");
     }
 
     // -------------------------- END FORMAT VALUES --------------------------
@@ -120,16 +121,16 @@ class AbstractCRUDHelperTest extends TestCase
     * @test
     */
     public function formatData_classWithData_correctlyFormattedData(){
-        $cocktail = new CocktailTestObject();
-        $cocktail->name = "Mojito";
-        $cocktail->description = "Served cold";
-        $cocktail->recipe = "Contains ingredients";
+        $model = new FakeModel();
+        $model->name = "Mojito";
+        $model->description = "Served cold";
+        $model->recipe = "Contains ingredients";
         $expectedData = [
             "name" => "Mojito",
             "description" => "Served cold",
             "recipe" => "Contains ingredients"
         ];
-        $actualData = $this->abstractCRUDHelper->formatData($cocktail);
+        $actualData = $this->abstractCRUDHelper->formatData($model);
         $this->assertEquals($expectedData, $actualData);
     }
     // -------------------------- END FORMAT DATA --------------------------

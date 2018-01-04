@@ -1,44 +1,44 @@
 <?php
 namespace app\controller\cocktail;
-$root = $_SERVER['DOCUMENT_ROOT']."/projects/bachelor/app/";
-require_once $root."model/Cocktail.php";
+require_once __DIR__."/../../model/Cocktail.php";
+require_once __DIR__."/../../model/model.php";
 
 
 use app\model\Cocktail;
+use app\model\model;
 
 class CocktailController
 {
-    public function create()
+    public $cocktail;
+
+    public function __construct()
     {
+        $this->cocktail = new Cocktail();
     }
 
-    public function read($id)
-    {
-        $cocktail = new Cocktail();
-        return $cocktail->read($id);
+    public function getCocktailsStartingWith($letter){
+        $cocktails = $this->cocktail->readAll();
+
+        // set the letter to lowercase so method can take capital case letters
+        $letter = strtolower($letter);
+
+        $cocktailsStartingWithLetter = [];
+
+        // Foreach cocktail starting with the given letter put the cocktail into the array that should be returned
+        foreach ($cocktails as $key => $cocktail) {
+            // set the first letter to lower case so it can match the $letter
+            $cocktail['name'] = lcfirst($cocktail['name']);
+            if (substr($cocktail['name'], 0, 1) == $letter){
+                $cocktail['name'] = ucfirst($cocktail['name']);
+                $cocktailsStartingWithLetter[] = $cocktail;
+            }
+        }
+
+        // Sort the array
+        sort($cocktailsStartingWithLetter);
+
+        return $cocktailsStartingWithLetter;
     }
 
-    public function update()
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function delete()
-    {
-        // TODO: Implement delete() method.
-    }
-    public function readAll(){
-        $cocktail = new Cocktail();
-        return $cocktail->readAll();
-    }
 }
-
-$cl = new CocktailController();
-
-echo "<pre>";
-$cocktails = $cl->read(1);
-echo "----------- RESULT -----------".PHP_EOL;
-print_r($cocktails); ECHO PHP_EOL;
-echo "----------- RESULT -----------".PHP_EOL;
-
 

@@ -62,7 +62,7 @@ class AbstractCRUDHelper
         }
         // Throw exception if no data was provided
         if (empty($propertiesAndValues)){
-            throw new InvalidArgumentException("You can not use this method without assigning values to the properties of the class ");
+            throw new InvalidArgumentException("You can not use this method with action: {$action}, without assigning values to the properties of the class ");
         }
 
         // Get the properties that are the keys
